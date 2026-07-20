@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Análise Bondinho | Bondinho vs Cristo Redentor · Layout Dark · Jul/2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  --orange:#E8500A;--orange2:#FF6B20;--orange-l:rgba(232,80,10,0.13);--orange-ll:rgba(232,80,10,0.07);
+  --bg:#080F18;--bg2:#0D1520;--bg3:#101A26;
+  --card:#111D29;--card2:#162433;
+  --border:#1A2E42;--border2:#243C53;
+  --text:#DDE8F2;--muted:#4D6B82;--muted2:#213245;
+  --green:#00D97E;--green-l:rgba(0,217,126,0.12);
+  --red:#FF4766;--red-l:rgba(255,71,102,0.12);
+  --blue:#00B8D4;--blue-l:rgba(0,184,212,0.12);
+  --violet:#A78BFA;--violet-l:rgba(167,139,250,0.12);
+  --shadow:0 2px 16px rgba(0,0,0,0.4);
+  --shadow-sm:0 1px 6px rgba(0,0,0,0.3);
+  --grid:rgba(255,255,255,0.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.5}
+
+/* HEADER */
+.hdr{background:var(--orange);position:relative;overflow:hidden;padding:0}
+.hdr-inner{display:flex;align-items:stretch;min-height:120px}
+.hdr-left{flex:1;padding:28px 40px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
+.hdr-logo{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.logo-icon{width:36px;height:36px}
+.logo-text{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:rgba(255,255,255,0.9);letter-spacing:.1em;text-transform:uppercase;line-height:1.2}
+.hdr h1{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:#fff;line-height:1.1;letter-spacing:-.02em}
+.hdr h1 .sep{color:rgba(255,255,255,0.55);font-weight:400;margin:0 8px}
+.hdr h1 .hl{color:#FFD060}
+.hdr-meta{margin-top:10px;font-size:11px;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:16px}
+.hdr-dot{width:3px;height:3px;background:rgba(255,255,255,0.4);border-radius:50%}
+.hdr-right{width:260px;position:relative;overflow:hidden;flex-shrink:0}
+.hdr-right-bg{position:absolute;inset:0;background:rgba(0,0,0,0.15)}
+.hdr-wave-bg{position:absolute;inset:0;opacity:0.15}
+/* Abstract wave decoration from template */
+.hdr-wave-deco{position:absolute;bottom:-20px;right:-20px;opacity:0.12}
+.hdr-stats-row{display:flex;background:#0D1520;border-bottom:3px solid var(--orange)}
+.hdr-stat{flex:1;padding:14px 20px;border-right:1px solid var(--border);text-align:center}
+.hdr-stat:last-child{border-right:none}
+.hs-val{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--orange);line-height:1}
+.hs-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.hs-badge{display:inline-flex;padding:1px 6px;border-radius:3px;font-size:9px;font-weight:700;font-family:'JetBrains Mono',monospace;margin-top:3px}
+
+/* WARN */
+.warn{margin:16px 40px 0;background:rgba(255,192,48,0.1);border:1px solid rgba(255,192,48,0.25);border-radius:6px;padding:10px 14px;font-size:12px;color:#C8A050;display:flex;gap:10px;line-height:1.6}
+.warn strong{color:#FFB020}
+.warn-ico{font-size:15px;flex-shrink:0;margin-top:1px}
+
+/* MAIN */
+.main{padding:24px 40px;max-width:1440px;margin:0 auto}
+
+/* SECTION */
+.slbl{display:flex;align-items:center;gap:10px;margin:28px 0 14px}
+.slbl:first-child{margin-top:0}
+.sl{width:3px;height:16px;background:var(--orange);border-radius:2px;flex-shrink:0}
+.slbl h2{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--text);letter-spacing:-.01em}
+.slbl .sn{margin-left:auto;font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace}
+.slbl .stag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.05em}
+
+/* KPI */
+.krow{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:18px}
+.kc{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px 18px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+.kc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
+.kc.or::before{background:var(--orange)}
+.kc.gn::before{background:var(--green)}
+.kc.rd::before{background:var(--red)}
+.kc.bl::before{background:var(--blue)}
+.kc.vi::before{background:var(--violet)}
+.klbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:7px;padding-left:8px}
+.kval{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:var(--text);line-height:1;margin-bottom:5px;padding-left:8px}
+.ksub{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding-left:8px}
+.b{display:inline-flex;align-items:center;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:700;font-family:'JetBrains Mono',monospace}
+.bu{background:var(--green-l);color:var(--green)}.bd{background:var(--red-l);color:var(--red)}.bn{background:var(--orange-l);color:var(--orange)}.bw{background:#FFF0E0;color:#A84000}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.g3{display:grid;grid-template-columns:1.4fr 1fr;gap:14px;margin-bottom:14px}
+.g32{display:grid;grid-template-columns:1fr 1.4fr;gap:14px;margin-bottom:14px}
+.g33{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px}
+
+/* CARD */
+.cc{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:20px;box-shadow:var(--shadow-sm)}
+.ct{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px}
+.cs{font-size:11px;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.cb{position:relative}
+
+/* STRIPS */
+.strip{border-radius:6px;padding:11px 14px;margin-bottom:12px;font-size:12px;display:flex;align-items:flex-start;gap:10px;line-height:1.65}
+.sc{background:var(--orange-ll);border:1px solid rgba(232,80,10,0.2);color:#FFB070}
+.sm{background:var(--green-l);border:1px solid rgba(27,138,82,0.2);color:#60DFA0}
+.sg{background:rgba(255,192,48,0.1);border:1px solid rgba(255,192,48,0.25);color:#FFD080}
+.sr{background:var(--red-l);border:1px solid rgba(192,57,43,0.2);color:#FFB0B0}
+.strip .ico{font-size:16px;flex-shrink:0;margin-top:1px}
+.sc strong{color:var(--orange)}.sm strong{color:var(--green)}.sg strong{color:#A05A00}.sr strong{color:var(--red)}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);padding:7px 10px;text-align:right;border-bottom:2px solid var(--border)}
+.tbl th:first-child{text-align:left}
+.tbl td{padding:8px 10px;font-size:12px;border-bottom:1px solid var(--border);vertical-align:middle}
+.tbl td:first-child{color:var(--text);font-weight:600}
+.tbl td:not(:first-child){text-align:right;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)}
+.tbl tr:hover td{background:rgba(255,255,255,0.03)}
+.tbl .hl td{background:var(--orange-ll)!important}.tbl .hl td:first-child{color:var(--orange)}
+.tbl .hg td{background:rgba(27,138,82,0.06)!important}.tbl .hg td:first-child{color:var(--green)}
+.atag{display:inline-flex;align-items:center;gap:7px;font-weight:600}
+.adot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.mbar{height:3px;background:var(--border);border-radius:2px;overflow:hidden;margin-top:3px}
+.mbf{height:100%;border-radius:2px}
+
+/* LEGEND */
+.leg{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+.li{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted)}
+.ld{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+
+/* PRICE LADDER */
+.ladder{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.lad-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:6px;border:1px solid var(--border);background:var(--card2)}
+.lad-name{font-size:12px;font-weight:600;flex:1;color:var(--text)}
+.lad-price{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;line-height:1;flex-shrink:0}
+.lad-bar{flex:2;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.lad-fill{height:100%;border-radius:3px}
+.lad-sub{font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace;white-space:nowrap}
+.lad-tag{font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;white-space:nowrap}
+
+/* HYP CARDS */
+.hgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.hcard{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px;box-shadow:var(--shadow-sm)}
+.hcard:hover{border-color:var(--orange)}
+.hhead{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px;gap:10px}
+.hico{width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.prob{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 7px;border-radius:3px}
+.ph{background:var(--red-l);color:var(--red)}.pm{background:#FFF0E0;color:#A84000}.pl{background:var(--blue-l);color:var(--blue)}
+.htitle{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--text);margin-bottom:7px;line-height:1.35}
+.hbody{font-size:11px;color:var(--muted);line-height:1.65;margin-bottom:10px}
+.hftr{border-top:1px solid var(--border);padding-top:8px;font-size:10px;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+.hfe{display:flex;align-items:flex-start;gap:5px;line-height:1.4}
+.hfi{flex-shrink:0;color:var(--orange)}
+.ev-score{display:flex;gap:3px;margin-top:6px}
+.ev-dot{width:10px;height:10px;border-radius:2px}
+.ev-lbl{font-size:9px;color:var(--muted);margin-top:3px}
+
+/* RATIO BARS */
+.rbar-wrap{display:flex;flex-direction:column;gap:5px;margin-top:8px}
+.rbar-row{display:grid;grid-template-columns:64px 1fr 48px;align-items:center;gap:8px}
+.rbar-yr{font-size:10px;font-weight:600;color:var(--muted);font-family:'JetBrains Mono',monospace}
+.rbar-bg{height:9px;background:var(--border);border-radius:4px;overflow:hidden}
+.rbar-fg{height:100%;border-radius:4px}
+.rbar-val{font-size:10px;font-family:'JetBrains Mono',monospace;text-align:right;font-weight:700}
+
+/* ORANGE SECTION DIVIDER (template-style) */
+.sec-divider{background:var(--orange);color:#fff;padding:10px 20px;border-radius:6px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.sec-divider h3{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:-.01em}
+.sec-divider .sd-num{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;opacity:.4;margin-right:4px}
+
+/* MISS */
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.mc{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px;box-shadow:var(--shadow-sm)}
+.mt{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--orange);margin-bottom:10px;display:flex;align-items:center;gap:7px}
+.ml{list-style:none}
+.ml li{font-size:11px;color:var(--muted);padding:5px 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:6px;line-height:1.5}
+.ml li:last-child{border-bottom:none}
+.ml li::before{content:'→';color:var(--orange);flex-shrink:0;font-size:10px;margin-top:2px}
+
+/* PRICE COMPARE */
+.price-compare-box{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:6px}
+.pc-item{border:1px solid var(--border);border-radius:8px;padding:12px;text-align:center;background:var(--card2)}
+.pc-label{font-size:10px;color:var(--muted);margin-bottom:4px;line-height:1.4}
+.pc-price{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;line-height:1;margin-bottom:3px}
+.pc-sub{font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace}
+.pc-tag{display:inline-flex;padding:2px 6px;border-radius:3px;font-size:9px;font-weight:700;margin-top:4px}
+
+/* FOOTER */
+.ftr{background:var(--orange);padding:16px 40px;display:flex;align-items:center;justify-content:space-between;margin-top:44px}
+.ftr-txt{font-size:11px;color:rgba(255,255,255,0.8)}
+.ftr-conf{font-size:10px;color:rgba(255,255,255,0.6);font-style:italic}
+
+/* STAB */
+.stab{width:100%;border-collapse:collapse;margin-top:8px}
+.stab th{font-size:10px;color:var(--muted);padding:4px 6px;text-align:center;border-bottom:1px solid var(--border);background:var(--card2)}
+.stab td{padding:6px;text-align:center;font-size:11px;font-family:'JetBrains Mono',monospace}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="hdr">
+  <!-- Orange wave decorations -->
+  <svg class="hdr-wave-deco" style="position:absolute;bottom:-30px;right:-30px;width:220px;height:200px;opacity:.12" viewBox="0 0 220 200">
+    <path d="M220,0 Q160,40 180,100 Q200,160 140,200 L220,200 Z" fill="white"/>
+    <path d="M220,0 Q140,60 170,120 Q200,180 120,200 L220,200 Z" fill="white" opacity=".5"/>
+  </svg>
+  <div class="hdr-inner">
+    <div class="hdr-left">
+      <div class="hdr-logo">
+        <div class="logo-text">Parque Bondinho<br>Pão de Açúcar</div>
+      </div>
+      <h1>Análise Bondinho <span class="sep">|</span> <span class="hl">Bondinho vs Cristo Redentor</span></h1>
+      <div class="hdr-meta">
+        <span>Inteligência de Mercado</span>
+        <span class="hdr-dot"></span>
+        <span>Jan–Jun 2026 × 2025</span>
+        <span class="hdr-dot"></span>
+        <span>Dados até Junho 2026</span>
+        <span class="hdr-dot"></span>
+        <span>09 Jul 2026</span>
+      </div>
+    </div>
+  </div>
+  <!-- Stats bar -->
+  <div class="hdr-stats-row">
+    <div class="hdr-stat">
+      <div class="hs-val">3,58M</div>
+      <div class="hs-lbl">Mercado YTD Jan–Jun</div>
+      <div class="hs-badge" style="background:var(--green-l);color:var(--green)">+3,2% vs 2025</div>
+    </div>
+    <div class="hdr-stat">
+      <div class="hs-val">1,09M</div>
+      <div class="hs-lbl">Bondinho YTD</div>
+      <div class="hs-badge" style="background:var(--orange-l);color:var(--orange)">+1,0% vs 2025</div>
+    </div>
+    <div class="hdr-stat">
+      <div class="hs-val">1,56M</div>
+      <div class="hs-lbl">Cristo Total YTD</div>
+      <div class="hs-badge" style="background:var(--green-l);color:var(--green)">+3,6% vs 2025</div>
+    </div>
+    <div class="hdr-stat">
+      <div class="hs-val">0,698</div>
+      <div class="hs-lbl">Razão Bondinho/Cristo</div>
+      <div class="hs-badge" style="background:var(--red-l);color:var(--red)">–2,2pp vs 2025</div>
+    </div>
+    <div class="hdr-stat">
+      <div class="hs-val">R$205</div>
+      <div class="hs-lbl">Preço Bondinho Jun/26</div>
+      <div class="hs-badge" style="background:var(--red-l);color:var(--red)">+70,8% vs Jan/22</div>
+    </div>
+  </div>
+</div>
+
+<!-- WARNING -->
+<div class="warn">
+  <span class="warn-ico">⚠️</span>
+  <div><strong>Aviso metodológico:</strong> Os dados de visitantes estrangeiros do Bondinho são estimativas baseadas exclusivamente em compras pelo site. A representatividade por país pode estar distorcida conforme o perfil de compra de cada nacionalidade (bilheteria vs. digital). Conclusões por país de origem devem ser tratadas como tendências indicativas.</div>
+</div>
+
+<div class="main">
+
+<!-- MAIN INSIGHT -->
+<div class="strip sc" style="margin-top:16px">
+  <span class="ico">🔑</span>
+  <div><strong>Insight central:</strong> A correlação PAX Bondinho × PAX Cristo é r=0,982. Ambos são movidos pelo mesmo driver de demanda (fluxo turístico ao Rio). Toda divergência de crescimento entre eles é explicável exclusivamente por dinâmica competitiva relativa — preço, posicionamento e canal. A desaceleração do Bondinho não é falta de turistas: é perda de share num mercado que cresce +3,2%.</div>
+</div>
+
+<!-- ── PANORAMA ──────────────────────────────────────────────────── -->
+<div class="sec-divider"><span class="sd-num">01</span><h3>Panorama do Mercado — Atrativos Pagos Rio de Janeiro</h3></div>
+
+<div class="g3">
+  <div class="cc">
+    <div class="ct">Evolução Mensal do Mercado Total</div>
+    <div class="cs"><span>PAX mensal todos os atrativos pagos (em mil)</span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--orange)">2024–2026</span></div>
+    <div class="cb" style="height:248px"><canvas id="chartMercado"></canvas></div>
+    <div class="leg"><div class="li"><div class="ld" style="background:#C0B0A0"></div>2024</div><div class="li"><div class="ld" style="background:var(--blue)"></div>2025</div><div class="li"><div class="ld" style="background:var(--orange)"></div>2026</div></div>
+  </div>
+  <div class="cc">
+    <div class="ct">YTD Jan–Jun · Comparativo por Atrativo</div>
+    <div class="cs"><span>Variação % e volumes vs mesmo período 2025</span></div>
+    <table class="tbl" id="mktTable"></table>
+    <div style="font-size:10px;color:var(--muted);margin-top:8px">* Cristo Total = Trem + Paineiras</div>
+  </div>
+</div>
+
+<!-- ── BONDINHO DEEP DIVE ────────────────────────────────────────── -->
+<div class="sec-divider"><span class="sd-num">02</span><h3>Parque Bondinho — Longa Série & Razão vs Cristo (Jan/22–Jun/26)</h3></div>
+
+<div class="strip sg">
+  <span class="ico">📌</span>
+  <div><strong>Ponto de inflexão — Dezembro/2023:</strong> O Bondinho subiu de R$160 para R$185 (+15,6%) enquanto o Trem permaneceu a R$122,50. O prêmio do Bondinho sobre Cristo passou de 30,6% para 51,0% em um único mês. O ratio Bondinho/Cristo caiu de ~0,708 para ~0,690 em Janeiro/24 e não recuperou o patamar anterior.</div>
+</div>
+
+<div class="g2">
+  <div class="cc">
+    <div class="ct">PAX Mensal — Bondinho vs Cristo (Jan/22–Jun/26)</div>
+    <div class="cs"><span>Volume mensal em mil visitantes</span><span class="b bn">r=0,982</span></div>
+    <div class="cb" style="height:238px"><canvas id="chartLongSeries"></canvas></div>
+    <div class="leg"><div class="li"><div class="ld" style="background:var(--orange)"></div>Bondinho</div><div class="li"><div class="ld" style="background:var(--blue)"></div>Cristo (Total)</div></div>
+  </div>
+  <div class="cc">
+    <div class="ct">Razão Bondinho / Cristo — Série Histórica</div>
+    <div class="cs"><span>Queda = Bondinho perdendo share relativo. SMA-4 = tendência estrutural.</span></div>
+    <div class="cb" style="height:238px"><canvas id="chartRatio"></canvas></div>
+    <div class="leg"><div class="li"><div class="ld" style="background:var(--blue)"></div>Razão Bondinho/Cristo</div><div class="li"><div class="ld" style="background:var(--red)"></div>Tendência (SMA-4)</div></div>
+  </div>
+</div>
+
+<div class="g2">
+  <div class="cc">
+    <div class="ct">Variação YoY Mensal — Bondinho</div>
+    <div class="cs"><span>Crescimento vs mesmo mês do ano anterior (elimina sazonalidade)</span></div>
+    <div class="cb" style="height:200px"><canvas id="chartYoY"></canvas></div>
+    <div style="font-size:11px;color:var(--muted);margin-top:8px">Mai/26: <strong style="color:var(--red)">–1,2%</strong> · Jun/26: <strong style="color:var(--red)">–6,0%</strong> — desaceleração que se torna queda real nos últimos meses.</div>
+  </div>
+  <div class="cc">
+    <div class="ct">YoY Bondinho vs Cristo — Divergência de Crescimento</div>
+    <div class="cs"><span>Linha laranja = Bondinho · Linha azul = Cristo. Quando a linha laranja está acima, o Bondinho cresce mais naquele mês — e vice-versa.</span></div>
+    <div class="cb" style="height:200px"><canvas id="chartYoYComp"></canvas></div>
+    <div class="leg"><div class="li"><div class="ld" style="background:var(--orange)"></div>Bondinho</div><div class="li"><div class="ld" style="background:var(--blue)"></div>Cristo</div></div>
+  </div>
+</div>
+
+<!-- ── CRISTO ────────────────────────────────────────────────────── -->
+<div class="sec-divider"><span class="sd-num">03</span><h3>Cristo Redentor — Trem Corcovado & Paineiras: Dinâmica Interna</h3></div>
+
+<div class="strip sm">
+  <span class="ico">💡</span>
+  <div><strong>Arquitetura de preços assimétrica:</strong> Cristo opera em 3 faixas (R$87 / R$132 / R$134). O Bondinho opera em faixa única (R$205). Para uma família de 4, a diferença é R$472 por visita — 50% maior do que em Nov/23 (R$314). Cristo captura toda a curva de demanda; o Bondinho apenas a faixa ultra-premium.</div>
+</div>
+
+<div class="g2">
+  <div class="cc">
+    <div class="ct">Trem vs Paineiras — Volume Mensal (Jan/22–Jun/26)</div>
+    <div class="cs"><span>Composição interna dos dois acessos ao Cristo Redentor (em mil)</span></div>
+    <div class="cb" style="height:230px"><canvas id="chartCristo"></canvas></div>
+    <div class="leg"><div class="li"><div class="ld" style="background:var(--blue)"></div>Trem Corcovado</div><div class="li"><div class="ld" style="background:var(--green)"></div>Paineiras</div></div>
+  </div>
+  <div class="cc">
+    <div class="ct">Preços Abr–Jun/2026 — Escada de Opções</div>
+    <div class="cs"><span>Bondinho: um produto, um preço. Cristo: um destino, três formas de acesso — três faixas de preço.</span></div>
+    <div class="price-compare-box">
+      <div class="pc-item" style="border-color:rgba(232,80,10,0.4)">
+        <div class="pc-label">Bondinho<br>Pão de Açúcar</div>
+        <div class="pc-price" style="color:var(--orange)">R$205</div>
+        <div class="pc-sub">US$40 · €35</div>
+        <div class="pc-tag" style="background:var(--orange-l);color:var(--orange)">Único preço</div>
+      </div>
+      <div class="pc-item" style="border-color:rgba(26,92,168,0.3)">
+        <div class="pc-label">Trem do<br>Corcovado</div>
+        <div class="pc-price" style="color:var(--blue)">R$134</div>
+        <div class="pc-sub">US$26 · €23</div>
+        <div class="pc-tag" style="background:var(--blue-l);color:var(--blue)">Preço Padrão</div>
+      </div>
+      <div class="pc-item" style="border-color:rgba(107,78,158,0.3)">
+        <div class="pc-label">Paineiras<br>Copa/Largo</div>
+        <div class="pc-price" style="color:var(--violet)">R$132</div>
+        <div class="pc-sub">US$26 · €22</div>
+        <div class="pc-tag" style="background:var(--violet-l);color:var(--violet)">Preço Padrão</div>
+      </div>
+      <div class="pc-item" style="border-color:rgba(27,138,82,0.3)">
+        <div class="pc-label">Saída<br>Paineiras</div>
+        <div class="pc-price" style="color:var(--green)">R$87</div>
+        <div class="pc-sub">US$17 · €15</div>
+        <div class="pc-tag" style="background:var(--green-l);color:var(--green)">Preço Baixo</div>
+      </div>
+    </div>
+    <div style="margin-top:12px">
+      <div class="cs" style="margin-bottom:8px;color:var(--text);font-weight:600">Share Trem vs Paineiras no Cristo por Ano</div>
+      <div class="cb" style="height:120px"><canvas id="chartCristoShare"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CÂMBIO & PREÇO ─────────────────────────────────────────────── -->
+<div class="sec-divider"><span class="sd-num">04</span><h3>Câmbio & Precificação — Impactos Quantificados (Nov/23–Jun/26)</h3></div>
+
+<div class="strip sr">
+  <span class="ico">🔥</span>
+  <div><strong>O Duplo Choque de Dezembro/2023:</strong> Bondinho +15,6% (R$160→R$185) E Milei devaluation -56% ARS simultaneamente. Para o visitante argentino, o Bondinho passou de ARS 11.765 para ARS 30.833 em 30 dias (+162%). Em Jun/26: ARS 58.571 (+397% vs Nov/23). Argentina é o maior mercado internacional do Bondinho.</div>
+</div>
+
+<div class="g33">
+  <div class="cc">
+    <div class="ct">Prêmio Bondinho sobre Trem (%)</div>
+    <div class="cs"><span>Dez/23: salto 30,6%→51,0%. Jun/26: 53,0%</span></div>
+    <div class="cb" style="height:196px"><canvas id="chartPremium"></canvas></div>
+  </div>
+  <div class="cc">
+    <div class="ct">Bondinho em USD, EUR & Peso Argentino</div>
+    <div class="cs"><span>Custo real para estrangeiro em sua moeda. ARS no eixo direito (÷100).</span></div>
+    <div class="cb" style="height:196px"><canvas id="chartCambio"></canvas></div>
+    <div class="leg"><div class="li"><div class="ld" style="background:var(--blue)"></div>USD</div><div class="li"><div class="ld" style="background:var(--violet)"></div>EUR</div><div class="li"><div class="ld" style="background:var(--red)"></div>ARS ÷100</div></div>
+  </div>
+  <div class="cc">
+    <div class="ct">Evolução de Preços (R$)</div>
+    <div class="cs"><span>Bondinho vs Trem vs Paineiras (degrau = reajuste)</span></div>
+    <div class="cb" style="height:196px"><canvas id="chartPrecos"></canvas></div>
+    <div class="leg"><div class="li"><div class="ld" style="background:var(--orange)"></div>Bondinho</div><div class="li"><div class="ld" style="background:var(--blue)"></div>Trem</div><div class="li"><div class="ld" style="background:var(--green)"></div>Pain.Saída</div></div>
+  </div>
+</div>
+
+<div class="g32">
+  <div class="cc">
+    <div class="ct">Razão Bondinho/Cristo — Média Anual YTD Jan–Jun</div>
+    <div class="cs"><span>Tendência estrutural de longo prazo</span></div>
+    <div class="rbar-wrap" id="rbarWrap"></div>
+    <div style="font-size:11px;color:var(--muted);margin-top:12px;line-height:1.6">A queda de <span style="color:var(--red);font-weight:700">0,720 → 0,700</span> entre 2025 e 2026 (YTD) representa ~<span style="color:var(--red);font-weight:700">15.600 visitantes/mês</span> abaixo do potencial se mantida a razão de 2025.</div>
+    <div style="margin-top:10px">
+      <div style="font-size:10px;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;font-weight:700">Índice Sazonal por Mês (médias históricas)</div>
+      <table class="stab">
+        <tr><th>Jan</th><th>Fev</th><th>Mar</th><th>Abr</th><th>Mai</th><th>Jun</th><th>Jul</th><th>Ago</th><th>Set</th><th>Out</th><th>Nov</th><th>Dez</th></tr>
+        <tr>
+          <td style="color:var(--red)">0,685</td><td style="color:var(--red)">0,683</td><td style="color:var(--red)">0,691</td>
+          <td style="color:#A05A00">0,719</td><td style="color:#A05A00">0,727</td><td style="color:#A05A00">0,740</td>
+          <td style="color:var(--green)">0,780</td><td style="color:var(--green)">0,736</td>
+          <td style="color:#A05A00">0,707</td><td style="color:#A05A00">0,735</td><td style="color:#A05A00">0,726</td><td style="color:#A05A00">0,724</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="cc">
+    <div class="ct">Correlação: Câmbio × Indicadores de PAX</div>
+    <div class="cs"><span>Pearson r — o câmbio explica o VOLUME mas não o MIX entre atrativos</span></div>
+    <div class="cb" style="height:196px"><canvas id="chartCorr"></canvas></div>
+    <div style="font-size:11px;color:var(--muted);margin-top:10px;line-height:1.6">Correlação câmbio × razão: <strong style="color:var(--orange)">r=0,155 (muito fraca)</strong> — câmbio afeta o total de turistas, não a escolha entre Bondinho e Cristo. A decisão de qual visitar tem outros drivers dominantes.</div>
+  </div>
+</div>
+
+<!-- ── HIPÓTESES ─────────────────────────────────────────────────── -->
+<div class="sec-divider"><span class="sd-num">05</span><h3>Hipóteses Estratégicas — Bases Teóricas e Evidência Quantitativa</h3></div>
+
+<div class="hgrid">
+  <div class="hcard">
+    <div class="hhead"><div class="hico" style="background:var(--red-l)">💥</div><span class="prob ph">Alta · Evidência direta</span></div>
+    <div class="htitle">Duplo Choque Dez/23: Price Anchoring + Colapso ARS Simultâneos</div>
+    <div class="hbody">O Bondinho subiu +15,6% no mesmo mês que o ARS colapsou 56% (Milei, Dez/13/23). Dois mercados impactados simultaneamente. O ratio Bondinho/Cristo caiu de 0,708→0,690 em Jan/24 e nunca mais recuperou o patamar anterior. A teoria do price anchoring (Kahneman & Tversky, 1979) estabelece que consumidores avaliam preços relativamente a âncoras — o Trem fixo em R$122,50 funcionava como referência que tornou o salto de R$160→R$185 do Bondinho percebido como ruptura. Ariely (2008) complementa: percepção de valor é construída comparativamente, não em absoluto. Do lado cambial, Crouch (1994) estabelece relação empírica direta entre variação de câmbio e demanda turística — a desvalorização de 56% do ARS equivale a um aumento de 128% no custo real do Bondinho para o visitante argentino em apenas 30 dias.</div>
+    <div class="hftr">
+      <div class="hfe"><span class="hfi">▲</span> Dez/23: ARS 11.765→30.833 (+162%) em 30 dias</div>
+      <div class="hfe"><span class="hfi">▲</span> Prêmio Bond/Trem: 30,6%→51,0% em um único mês</div>
+      <div class="hfe"><span class="hfi">—</span> Falta: NPS por país imediatamente após o choque</div>
+    </div>
+    <div class="ev-score"><div class="ev-dot" style="background:var(--orange)"></div><div class="ev-dot" style="background:var(--orange)"></div><div class="ev-dot" style="background:var(--orange)"></div><div class="ev-dot" style="background:var(--orange)"></div><div class="ev-dot" style="background:var(--orange)"></div></div>
+    <div class="ev-lbl">Evidência: ●●●●● Muito forte</div>
+  </div>
+
+  <div class="hcard">
+    <div class="hhead"><div class="hico" style="background:var(--red-l)">📉</div><span class="prob ph">Alta · Estrutural</span></div>
+    <div class="htitle">Mudança de Mix de Mercado Como Causa Raiz (Anterior ao Choque)</div>
+    <div class="hbody">Em Jul/23 — pico sazonal do Bondinho — o gap YoY já era –14,3pp (Cristo +27,1% vs Bondinho +12,8%). Isso prova que a perda de share competitivo antecede o choque de preço de Dez/23. A teoria do Tourism Area Life Cycle (Butler, 1980) explica o mecanismo: mercados maduros como Argentina e Chile, com alta taxa de visitantes recorrentes ao Rio, reduzem progressivamente a propensão a revisitar atrativos já conhecidos. Ao mesmo tempo, novos mercados (Colômbia, Uruguai, Peru) chegam guiados por descoberta digital, onde o Cristo — Maravilha do Mundo Moderno — domina o topo de busca. O Dez/23 foi acelerador de uma tendência estrutural já em curso, não sua causa raiz.</div>
+    <div class="hftr">
+      <div class="hfe"><span class="hfi">▲</span> Jul/23: Bondinho no pico sazonal mas 14,3pp abaixo do Cristo em YoY</div>
+      <div class="hfe"><span class="hfi">▲</span> Série de gaps negativos antes do choque (Jul–Nov/23)</div>
+      <div class="hfe"><span class="hfi">—</span> Falta: dados de origem por mês de 2023 (CLARO)</div>
+    </div>
+    <div class="ev-score"><div class="ev-dot" style="background:var(--orange)"></div><div class="ev-dot" style="background:var(--orange)"></div><div class="ev-dot" style="background:var(--orange)"></div><div class="ev-dot" style="background:var(--orange)"></div><div class="ev-dot" style="background:var(--border)"></div></div>
+    <div class="ev-lbl">Evidência: ●●●●○ Forte</div>
+  </div>
+
+  <div class="hcard">
+    <div class="hhead"><div class="hico" style="background:rgba(255,176,32,0.15)">🏗️</div><span class="prob pm">Alta · Estrutural</span></div>
+    <div class="htitle">Cristo como Ecossistema Multi-Produto: Captura de Demanda Onde o Bondinho É Ausente</div>
+    <div class="hbody">O Cristo opera três produtos independentes em três faixas: Paineiras Saída (R$87 — budget), Paineiras Copa (R$132 — mainstream) e Trem Corcovado (R$134 — premium). O Bondinho, a R$205, existe apenas na faixa ultra-premium. Bondinho e Cristo não se substituem — a correlação r=0,982 entre seus PAX confirma que crescem e caem juntos pelo mesmo driver de demanda. O problema é de cobertura: com mercados de maior sensibilidade a preço crescendo aceleradamente (Colômbia +57%, Uruguai +111%), o Cristo os captura via Paineiras Saída; o Bondinho não os captura de forma alguma. A teoria de versioning (Shapiro & Varian, 1999) demonstra que portfólios multi-faixa maximizam captura ao longo de toda a curva de demanda — o Bondinho está estruturalmente ausente da faixa de R$87 a R$132, exatamente onde cresce o novo turismo incoming.</div>
+    <div class="hftr">
+      <div class="hfe"><span class="hfi">▲</span> Cristo YTD 2026: +3,6% vs Bondinho +1,0% — cresce 3,6× mais rápido no mesmo mercado</div>
+      <div class="hfe"><span class="hfi">▲</span> Família×4: Bondinho R$820 vs Paineiras Saída R$348 → diferença de R$472 (+50% vs Nov/23)</div>
+      <div class="hfe"><span class="hfi">—</span> Falta: dados de renda e disposição a pagar por país de origem; pesquisa de decisão de compra</div>
+    </div>
+    <div class="ev-score"><div class="ev-dot" style="background:var(--orange)"></div><div class="ev-dot" style="background:var(--orange)"></div><div class="ev-dot" style="background:var(--orange)"></div><div class="ev-dot" style="background:var(--orange)"></div><div class="ev-dot" style="background:var(--border)"></div></div>
+    <div class="ev-lbl">Evidência: ●●●●○ Forte</div>
+  </div>
+
+  <div class="hcard">
+    <div class="hhead"><div class="hico" style="background:rgba(255,176,32,0.15)">🏗️</div><span class="prob pm">Alta · Estrutural</span></div>
+    <div class="htitle">Vulnerabilidade de Preço Único — Cristo tem 3 Produtos, Bondinho tem 1</div>
+    <div class="hbody">Cristo opera em R$87 (budget), R$132 (mainstream) e R$134 (premium). O Bondinho a R$205 atua apenas no ultra-premium sem proteção nem embaixo (budget) nem em cima (exclusividade real). Com crescimento acelerado de mercados de menor poder aquisitivo (Colômbia +57%, Uruguai +111%), o Bondinho não consegue capturar esse segmento — o Cristo sim.</div>
+    <div class="hftr">
+      <div class="hfe"><span class="hfi">▲</span> Gap Bond vs PainSaída×4: R$314 (Nov/23) → R$472 (Jun/26): +50%</div>
+      <div class="hfe"><span class="hfi">▲</span> Novos mercados crescem em volume mas com menor poder aquisitivo</div>
+      <div class="hfe"><span class="hfi">—</span> Falta: pesquisa de disposição a pagar por país de origem</div>
+    </div>
+    <div class="ev-score"><div class="ev-dot" style="background:var(--orange)"></div><div class="ev-dot" style="background:var(--orange)"></div><div class="ev-dot" style="background:var(--orange)"></div><div class="ev-dot" style="background:var(--orange)"></div><div class="ev-dot" style="background:var(--border)"></div></div>
+    <div class="ev-lbl">Evidência: ●●●●○ Forte</div>
+  </div>
+
+  <div class="hcard">
+    <div class="hhead"><div class="hico" style="background:var(--blue-l)">📱</div><span class="prob pl">Média · Digital</span></div>
+    <div class="htitle">Iconicity Gap no Discovery Digital: Cristo é Maravilha do Mundo Moderno</div>
+    <div class="hbody">Cristo Redentor é #1 em "What to do in Rio de Janeiro" globalmente e uma das 7 Maravilhas do Mundo Moderno (2007). Pesquisas de turismo digital (Gretzel et al., 2020) mostram decisão crescentemente mediada por algoritmos. Para turistas de novos mercados (Colômbia, Peru) que pesquisam online, Cristo aparece antes do Bondinho em praticamente todos os canais de descoberta digital.</div>
+    <div class="hftr">
+      <div class="hfe"><span class="hfi">▲</span> Cristo: 7 Maravilhas do Mundo Moderno — reconhecimento global instantâneo</div>
+      <div class="hfe"><span class="hfi">—</span> Falta: Google Trends comparativo + share of voice em OTAs por país</div>
+    </div>
+    <div class="ev-score"><div class="ev-dot" style="background:var(--orange)"></div><div class="ev-dot" style="background:var(--orange)"></div><div class="ev-dot" style="background:var(--orange)"></div><div class="ev-dot" style="background:var(--border)"></div><div class="ev-dot" style="background:var(--border)"></div></div>
+    <div class="ev-lbl">Evidência: ●●●○○ Moderada</div>
+  </div>
+
+  <div class="hcard">
+    <div class="hhead"><div class="hico" style="background:var(--blue-l)">📊</div><span class="prob pl">Moderada · Viés</span></div>
+    <div class="htitle">Viés de Medição: Bilheteria vs Site Distorce Captura por Origem</div>
+    <div class="hbody">Como a base de visitantes estrangeiros usa apenas compras no site, mercados com maior digitalização (EUA, Europa) ficam sobre-representados; mercados de compra presencial (Colômbia, Uruguai, Peru) ficam sub-representados. Com crescimento acelerado desses mercados no denominador (CLARO), a taxa de captura PARECE cair mesmo se o Bondinho mantiver share real. Parte da "queda de captura" pode ser artefato estatístico.</div>
+    <div class="hftr">
+      <div class="hfe"><span class="hfi">▲</span> EUA e Europa (alta digitalização): captura registrada cresceu — consistente com hipótese</div>
+      <div class="hfe"><span class="hfi">▲</span> Colômbia, Uruguai: crescem no denominador mas subregistrados no numerador</div>
+      <div class="hfe"><span class="hfi">▲</span> Correção crítica: split de vendas por canal por país de origem</div>
+    </div>
+    <div class="ev-score"><div class="ev-dot" style="background:var(--orange)"></div><div class="ev-dot" style="background:var(--orange)"></div><div class="ev-dot" style="background:var(--orange)"></div><div class="ev-dot" style="background:var(--border)"></div><div class="ev-dot" style="background:var(--border)"></div></div>
+    <div class="ev-lbl">Evidência: ●●●○○ Moderada</div>
+  </div>
+</div>
+
+
+<!-- ── ORIGEM ───────────────────────────────────────────────────────── -->
+<div class="sec-divider"><span class="sd-num">06</span><h3>Captura por Origem — Visitantes Estrangeiros (Jan/24–Mai/26)</h3></div>
+
+<div class="strip sg">
+  <span class="ico">🌎</span>
+  <div><strong>Crescimento assimétrico por mercado:</strong> EUA (+17,0%), Colômbia (+88,4%), México (+27,0%) e Espanha (+21,6%) crescem acima da média de +5,8%. Chile perde –21,7% — refletindo tanto sensibilidade ao preço quanto maturação do mercado. Período: Jan–Mai/26 vs Jan–Mai/25 (mesmo período, base comparável).</div>
+</div>
+
+<div class="g3">
+  <div class="cc">
+    <div class="ct">Top 10 Países — Bondinho YTD (Jan–Mai/26 vs Jan–Mai/25)</div>
+    <div class="cs"><span>Estimativa via compras no site. Mercados com alta compra presencial ficam sub-representados.</span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--orange)">JAN–MAI</span></div>
+    <div class="cb" style="height:290px"><canvas id="chartOrigemBar"></canvas></div>
+  </div>
+  <div class="cc">
+    <div class="ct">Ranking e Variação por País</div>
+    <div class="cs"><span>YTD Jan–Mai/25 vs Jan–Mai/26 · mesma janela temporal</span></div>
+    <table class="tbl" id="origemTable"></table>
+    <div style="font-size:10px;color:var(--muted);margin-top:8px">Total estrangeiro: <strong style="color:var(--orange)">456.413</strong> · Intl <span class="b bu">+5,8%</span> vs Nacional <span class="b bd">–1,2%</span></div>
+  </div>
+</div>
+
+<div class="g2">
+  <div class="cc">
+    <div class="ct">Tendência Mensal — Top 5 Países (Jan/24–Mai/26)</div>
+    <div class="cs"><span>Argentina · EUA · Chile · Colômbia · França</span></div>
+    <div class="cb" style="height:220px"><canvas id="chartOrigemTrend"></canvas></div>
+    <div class="leg">
+      <div class="li"><div class="ld" style="background:#58C8F8"></div>Argentina</div>
+      <div class="li"><div class="ld" style="background:#4080E0"></div>EUA</div>
+      <div class="li"><div class="ld" style="background:#E89040"></div>Chile</div>
+      <div class="li"><div class="ld" style="background:#60D090"></div>Colômbia</div>
+      <div class="li"><div class="ld" style="background:#B888F0"></div>França</div>
+    </div>
+  </div>
+  <div class="cc">
+    <div class="ct">Mix Estrangeiro vs Nacional — YTD Jan–Mai</div>
+    <div class="cs"><span>Participação % no total capturado via canal digital. Internacional avança share.</span></div>
+    <div class="cb" style="height:220px"><canvas id="chartMixNacIntl"></canvas></div>
+    <div class="leg">
+      <div class="li"><div class="ld" style="background:var(--orange)"></div>Estrangeiro</div>
+      <div class="li"><div class="ld" style="background:var(--blue)"></div>Nacional</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── MISSING DATA ──────────────────────────────────────────────── -->
+<div class="sec-divider" style="margin-top:24px"><span class="sd-num">07</span><h3>Dados Necessários para Validação das Hipóteses</h3></div>
+
+<div class="mgrid">
+  <div class="mc">
+    <div class="mt">🔬 Dados Internos — Alta Urgência</div>
+    <ul class="ml">
+      <li>Split de vendas por canal (bilheteria × site × OTA × receptivo) por país e por mês — <strong>é o dado que mais muda a interpretação</strong></li>
+      <li>NPS/CSAT segmentado por país de origem e por canal — identifica se o problema é atração ou satisfação</li>
+      <li>% visitantes em primeira vez vs. recorrentes ao Rio, por país — discrimina saturação de mercado maduro de novo não-conversor</li>
+      <li>Histórico de elasticidade implícita: variações de preço históricas vs. PAX nas semanas seguintes</li>
+      <li>Taxa de abandono de checkout no site por país de origem</li>
+    </ul>
+  </div>
+  <div class="mc">
+    <div class="mt">🌐 Dados Externos — Percepção e Mercado</div>
+    <ul class="ml">
+      <li>Google Trends "Bondinho Rio" vs "Cristo Redentor" por país nos últimos 4 anos — valida hipótese de iconicity gap</li>
+      <li>Ranking, volume e sentimento no TripAdvisor, GetYourGuide, Viator — variação temporal vs. Cristo</li>
+      <li>Pesquisa de saída com turistas no Rio: "Visitou o Bondinho? Por quê?" — única forma de validar hipóteses motivacionais</li>
+      <li>Preço médio real negociado via receptivos/agências por mercado — o rack pode diferir do preço efetivo</li>
+      <li>Inflação ARS 2023–2026 e renda real de turistas argentinos — contextualiza poder aquisitivo além da taxa PTAX</li>
+    </ul>
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<div class="ftr">
+  <div>
+    <div class="ftr-txt" style="font-weight:700;color:#fff;margin-bottom:2px">Fontes dos dados</div>
+    <div class="ftr-txt">Parque Bondinho Pão de Açúcar · Trem Corcovado / Paineiras (PAX histórico) · Banco Central do Brasil — PTAX (câmbio) · Série Jan/22–Jun/26</div>
+    <div class="ftr-conf" style="margin-top:4px">Estritamente confidencial | Todos os direitos reservados · Parque Bondinho Pão de Açúcar · Jul/2026</div>
+  </div>
+  <div style="text-align:right">
+    <!-- Bondinho logo footer -->
+    <svg viewBox="0 0 80 28" fill="none" style="width:80px">
+      <rect width="80" height="28" rx="4" fill="rgba(255,255,255,0.15)"/>
+      <path d="M8 8 L72 14" stroke="white" stroke-width="1.2" opacity=".6"/>
+      <rect x="32" y="12" width="16" height="9" rx="2" fill="white" opacity=".9"/>
+      <circle cx="40" cy="12" r="2.5" fill="white" opacity=".7"/>
+    </svg>
+  </div>
+</div>
+
+<script>
+Chart.defaults.color='#7A6A58';Chart.defaults.font.family='Inter';Chart.defaults.plugins.legend.display=false;
+const G='rgba(255,255,255,0.04)';const gO={color:G,drawBorder:false};
+const OR='#E8500A'; const BL='#1A5CA8'; const GN='#1B8A52'; const RD='#C0392B'; const VI='#6B4E9E';
+
+// ─── DATA ─────────────────────────────────────────────────────────────────
+const allLabels=['jan/22','fev/22','mar/22','abr/22','mai/22','jun/22','jul/22','ago/22','set/22','out/22','nov/22','dez/22','jan/23','fev/23','mar/23','abr/23','mai/23','jun/23','jul/23','ago/23','set/23','out/23','nov/23','dez/23','jan/24','fev/24','mar/24','abr/24','mai/24','jun/24','jul/24','ago/24','set/24','out/24','nov/24','dez/24','jan/25','fev/25','mar/25','abr/25','mai/25','jun/25','jul/25','ago/25','set/25','out/25','nov/25','dez/25','jan/26','fev/26','mar/26','abr/26','mai/26','jun/26'];
+const paxBond=[110889,76096,93809,96580,89922,76071,149306,94935,116680,125884,115390,126980,186621,144888,162567,134816,113847,115993,168468,120439,134174,135277,166092,132659,171493,144135,145100,130223,121335,114917,170579,148524,150255,143554,155976,155417,233252,190905,201830,158139,153096,139928,192732,176948,156918,161949,170094,168684,223819,192561,201389,187104,151298,131517];
+const paxCristo=[168494,115650,143802,132630,124658,101092,181352,132675,168655,161092,153217,168059,261127,204190,227181,186499,156653,156932,230522,170754,196206,187354,234574,187116,248401,211960,211063,184232,166285,159475,216428,200826,207962,202973,220618,212760,335677,276058,279736,222303,209174,187128,248082,226090,214725,221919,230971,239964,334591,285796,297769,257670,208769,179724];
+const ratio=[0.6581,0.658,0.6523,0.7282,0.7214,0.7525,0.8233,0.7155,0.6918,0.7814,0.7531,0.7556,0.7147,0.7096,0.7156,0.7229,0.7267,0.7391,0.7308,0.7053,0.6838,0.722,0.7081,0.709,0.6904,0.68,0.6875,0.7068,0.7297,0.7206,0.7882,0.7396,0.7225,0.7073,0.707,0.7305,0.6949,0.6915,0.7215,0.7114,0.7319,0.7478,0.7769,0.7826,0.7308,0.7298,0.7364,0.703,0.6689,0.6738,0.6763,0.7261,0.7244,0.7318];
+const paxTrem=[66.67,47.89,65.31,54.48,57.55,46.01,93.81,63.19,71.89,71.64,67.94,75.61,113.13,90.81,105,84.68,73.51,73.16,108.32,80.87,88.24,86.02,114.01,95.31,114,108.58,104.39,92.01,80.37,77.28,105.01,101.48,102.53,101.26,104.62,105.39,151.9,133.61,135.97,110.41,107.74,96.9,126.55,118.7,109.01,114.06,119.63,123.05,154.31,139.75,148.85,122.83,98.22,84.21];
+const paxPain=[101.82,67.76,78.49,78.15,67.11,55.09,87.55,69.49,96.77,89.46,85.28,92.45,148,113.38,122.18,101.82,83.14,83.77,122.2,89.88,107.97,101.33,120.56,91.81,134.4,100.39,106.67,92.22,85.92,82.19,111.42,99.35,105.44,101.72,116,108.33,183.77,142.45,143.77,111.9,101.43,90.22,121.53,107.39,105.72,107.86,111.34,116.91,180.28,146.22,148.92,134.84,110.55,95.51];
+const priceMonths=['nov/23','dez/23','jan/24','fev/24','mar/24','abr/24','mai/24','jun/24','jul/24','ago/24','set/24','out/24','nov/24','dez/24','jan/25','fev/25','mar/25','abr/25','mai/25','jun/25','jul/25','ago/25','set/25','out/25','nov/25','dez/25','jan/26','fev/26','mar/26','abr/26','mai/26','jun/26'];
+const priceBond=[160,185,185,185,185,185,185,185,185,185,185,185,185,195,195,195,195,195,195,195,195,195,195,195,195,199,199,199,199,205,205,205];
+const priceTrem=[122.5,122.5,122.5,122.5,122.5,122.5,122.5,122.5,122.5,122.5,122.5,122.5,128,128,128,128,128,128,128,128,128,128,128,128,134,134,134,134,134,134,134,134];
+const pricePainSaid=[81.5,81.5,81.5,81.5,81.5,81.5,81.5,81.5,81.5,81.5,81.5,81.5,84,84,84,85,85,85,85,85,85,85,85,85,87,87,87,87,87,87,87,87];
+const usd=[4.9205,4.8521,4.9526,4.9716,5.0153,5.1934,5.2443,5.5925,5.65,5.6103,5.4482,5.7867,5.973,6.1778,5.8415,5.8854,5.7055,5.6748,5.7227,5.4326,5.6015,5.4304,5.3229,5.3744,5.3368,5.4778,5.2576,5.1305,5.1819,4.9546,5.03,5.16];
+const eur=[5.356,5.3548,5.3567,5.3708,5.412,5.5382,5.6853,5.9912,6.1161,6.1977,6.0677,6.2977,6.3164,6.4023,6.0538,6.1067,6.1719,6.4286,6.4941,6.4037,6.3945,6.3459,6.2458,6.1997,6.1885,6.4338,6.2303,6.0612,5.9865,5.8127,5.87,5.89];
+const ars=[0.0136,0.006,0.006,0.0059,0.0058,0.0059,0.0059,0.0061,0.0061,0.0059,0.0056,0.0058,0.0059,0.006,0.0056,0.0055,0.0053,0.0048,0.0048,0.0045,0.0041,0.004,0.0039,0.0037,0.0037,0.0038,0.0036,0.0037,0.0037,0.0036,0.0036,0.0035];
+const premium=priceBond.map((b,i)=>+((b/priceTrem[i]-1)*100).toFixed(1));
+const bondUSD=priceBond.map((p,i)=>+(p/usd[i]).toFixed(1));
+const bondEUR=priceBond.map((p,i)=>+(p/eur[i]).toFixed(1));
+const bondARS100=priceBond.map((p,i)=>+(p/ars[i]/100).toFixed(0));
+const yoyLabels=['jan/23','fev/23','mar/23','abr/23','mai/23','jun/23','jul/23','ago/23','set/23','out/23','nov/23','dez/23','jan/24','fev/24','mar/24','abr/24','mai/24','jun/24','jul/24','ago/24','set/24','out/24','nov/24','dez/24','jan/25','fev/25','mar/25','abr/25','mai/25','jun/25','jul/25','ago/25','set/25','out/25','nov/25','dez/25','jan/26','fev/26','mar/26','abr/26','mai/26','jun/26'];
+const yoyBond=[68.3,90.4,73.3,39.6,26.6,52.5,12.8,26.9,15,7.5,43.9,4.5,-8.1,-0.5,-10.7,-3.4,6.6,-0.9,1.3,23.3,12,6.1,-6.1,17.2,36,32.4,39.1,21.4,26.2,21.8,13,19.1,4.4,12.8,9.1,8.5,-4,-0.9,-0.2,18.3,-1.2,-6.0];
+const yoyCristo=[55,76.6,58,40.6,25.7,55.2,27.1,28.7,16.3,16.3,53.1,11.3,-4.9,3.8,-7.1,-1.2,6.1,1.6,-6.1,17.6,6,8.3,-5.9,13.7,35.1,30.2,32.5,20.7,25.8,17.3,14.6,12.6,3.3,9.3,4.7,12.8,-0.3,3.5,6.4,15.9,-0.2,-4.0];
+const labels12=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+const mkt24=[652.839,465.968,476.629,451.067,424.636,429.509,672.679,494.681,505.765,521.011,518.169,496.329];
+const mkt25=[790.907,582.710,608.778,505.776,507.380,474.862,673.553,546.665,502.107,561.025,528.414,517.843];
+const mkt26=[774.013,596.274,654.528,604.355,510.773,442.395];
+
+
+// ─── ORIGEM DATA (from xlsx) ──────────────────────────────────────────────
+const origemLabels=['jan/24','fev/24','mar/24','abr/24','mai/24','jun/24','jul/24','ago/24','set/24','out/24','nov/24','dez/24','jan/25','fev/25','mar/25','abr/25','mai/25','jun/25','jul/25','ago/25','set/25','out/25','nov/25','dez/25','jan/26','fev/26','mar/26','abr/26','mai/26'];
+const origemArg=[6747.2,4470.6,3782.6,2215.2,1550.0,3229.5,3443.2,2458.6,2996.0,4149.7,3054.8,5306.4,24077.1,14592.0,13216.5,8461.0,6836.5,5845.7,12176.7,6485.4,8312.6,9436.0,9238.1,11441.3,23834.0,10286.9,16126.4,10618.4,6195.6];
+const origemChi=[14332.9,9064.0,8023.6,5069.4,5242.5,5427.3,9885.4,4943.1,9833.0,8206.2,10650.6,8349.3,21394.2,19062.4,10816.9,7726.8,11378.1,9131.2,12029.2,5873.7,12722.5,9867.6,9604.8,9396.5,14759.6,11540.1,12575.1,8324.4,7937.9];
+const origemEUA=[8184.5,5870.7,6839.2,6219.6,7385.2,6728.1,10385.2,4606.6,8181.3,4802.5,6506.0,8364.3,10000.5,8357.2,14229.6,5950.7,7851.9,10268.1,10185.4,7237.9,5851.9,6415.4,7629.7,11231.8,12475.7,10831.8,12640.2,9553.1,8793.8];
+const origemFra=[2315.6,6533.9,3285.9,6475.2,5242.5,1928.7,8497.0,10015.5,5185.4,4965.7,4739.1,3942.3,5204.6,9352.1,9076.3,6440.1,6260.8,4494.0,10760.7,13793.7,4264.3,3960.5,4917.0,5193.5,6065.9,10139.8,6154.0,6726.4,6173.9];
+const origemUK=[2674.9,3365.2,3591.5,4643.4,1732.3,2287.5,3110.0,4063.1,1958.9,2727.6,2146.6,2113.6,4030.1,4780.0,6810.1,4622.1,5461.2,4583.5,4897.2,4731.4,4321.7,3490.6,4896.2,4089.5,4752.1,7410.1,4825.3,6178.2,4218.8];
+const origemCol=[1636.9,1007.1,2177.8,1192.8,1641.1,2601.5,1666.1,1708.1,1728.5,3147.3,1882.4,1543.9,3552.3,1445.9,2544.3,4265.5,4205.8,5756.2,3960.6,5532.6,4696.5,8764.8,6358.8,4817.2,6053.7,2585.3,6544.4,7340.7,7646.8];
+const origemPer=[1636.9,2137.0,1910.4,1192.8,3099.9,2556.7,1832.7,2096.3,1536.4,3450.3,2080.6,2938.0,3529.2,4355.5,4075.4,4412.3,4133.9,3401.8,3613.9,3118.2,3713.1,4353.6,3741.9,3798.4,4623.1,3522.5,4695.1,5350.0,3727.8];
+const origemMex=[3154.0,1351.0,2865.6,3195.0,2780.8,3633.2,2832.3,2096.3,3111.2,2028.2,1981.5,1394.0,1744.5,1313.3,2506.2,3013.8,3606.1,3294.4,4875.1,3470.1,3876.3,4382.4,3429.4,2279.0,1627.0,3100.2,2777.3,3822.0,4149.2];
+const origemAle=[2595.1,2480.9,2177.8,1533.6,1869.1,1300.8,2110.4,1785.7,1766.9,1935.0,2064.1,1543.9,3627.1,2644.2,3945.9,2811.0,1887.0,1772.5,2411.7,2452.3,2566.5,3107.0,2937.7,2971.3,3953.9,3647.8,3893.8,3079.4,2228.9];
+const origemEsp=[1716.7,1842.3,1490.1,1107.6,1230.9,1166.2,2221.4,2588.0,1920.5,1258.9,1717.3,2248.5,2504.4,1759.9,2334.8,3076.7,1951.0,1432.3,2780.5,5944.1,2588.6,2157.6,3058.5,2595.0,3211.0,2656.2,3171.2,3079.4,2020.3];
+const origemPaises=[
+  {name:'Argentina',       ytd25:67183, ytd26:67061, var:-0.2, color:'#58C8F8'},
+  {name:'Chile',           ytd25:70378,     ytd26:55137,     var:-21.7,     color:'#E89040'},
+  {name:'Estados Unidos',  ytd25:46390, ytd26:54295, var:17.0, color:'#4080E0'},
+  {name:'França',          ytd25:36334,    ytd26:35260,    var:-3.0,    color:'#B888F0'},
+  {name:'Colômbia',        ytd25:16014,  ytd26:30171,  var:88.4,  color:'#60D090'},
+  {name:'Peru',            ytd25:20506,      ytd26:21919,      var:6.9,      color:'#F0C040'},
+  {name:'Reino Unido',     ytd25:25703, ytd26:27384, var:6.5, color:'#E07070'},
+  {name:'México',          ytd25:12184,    ytd26:15476,    var:27.0,    color:'#80D8D0'},
+  {name:'Alemanha',        ytd25:14915,  ytd26:16804,  var:12.7,  color:'#90A8D0'},
+  {name:'Espanha',         ytd25:11627,   ytd26:14138,   var:21.6,   color:'#F08090'},
+  {name:'Demais',          ytd25:110299,    ytd26:118762,    var:7.7,    color:'#607080'},
+];
+const ytdIntl25=431534, ytdIntl26=456413;
+const ytdNac25=505688, ytdNac26=499765;
+
+// ─── MARKET TABLE ─────────────────────────────────────────────────────────
+const mktData=[
+  {name:'AquaRio',color:GN,ytd25:485.402,ytd26:542.380,pct:11.7},
+  {name:'YupStar',color:'#5CA8D8',ytd25:128.654,ytd26:141.889,pct:10.3},
+  {name:'Cristo (Trem+Pain.)',color:BL,ytd25:1510.076,ytd26:1564.499,pct:3.6,cls:'hg'},
+  {name:'Paineiras',color:VI,ytd25:773.545,ytd26:816.325,pct:5.5},
+  {name:'Bondinho',color:OR,ytd25:1077.150,ytd26:1087.584,pct:1.0,cls:'hl'},
+  {name:'Trem Corcovado',color:'#4A7AB8',ytd25:736.531,ytd26:748.174,pct:1.6},
+  {name:'BioParque',color:'#5C8A7B',ytd25:269.131,ytd26:245.986,pct:-8.6},
+];
+const mktMax=Math.max(...mktData.map(d=>d.ytd26));
+const tbl=document.getElementById('mktTable');
+tbl.innerHTML=`<thead><tr><th>Atrativo</th><th>YTD 2025</th><th>YTD 2026</th><th>Var %</th></tr></thead><tbody id="mb"></tbody>`;
+document.getElementById('mb') && mktData.forEach(d=>{
+  const up=d.pct>=0;
+  const bw=+(d.ytd26/mktMax*100).toFixed(1);
+  const tr=document.createElement('tr');
+  if(d.cls)tr.className=d.cls;
+  tr.innerHTML=`<td><div class="atag"><div class="adot" style="background:${d.color}"></div>${d.name}</div><div class="mbar"><div class="mbf" style="width:${bw}%;background:${d.color}50"></div></div></td><td>${d.ytd25.toLocaleString('pt-BR',{maximumFractionDigits:0})}k</td><td>${d.ytd26.toLocaleString('pt-BR',{maximumFractionDigits:0})}k</td><td><span class="b ${up?'bu':'bd'}">${up?'+':''}${d.pct.toFixed(1)}%</span></td>`;
+  document.getElementById('mb').appendChild(tr);
+});
+
+// ─── RATIO BARS ──────────────────────────────────────────────────────────
+const ratioYears=[
+  {yr:'2022',vals:ratio.slice(0,12)},{yr:'2023',vals:ratio.slice(12,24)},
+  {yr:'2024',vals:ratio.slice(24,36)},{yr:'2025',vals:ratio.slice(36,48)},
+  {yr:'2026 YTD',vals:ratio.slice(48,54)},
+];
+const rMax=0.75; const rb=document.getElementById('rbarWrap');
+ratioYears.forEach(d=>{
+  const avg=+(d.vals.reduce((a,b)=>a+b,0)/d.vals.length).toFixed(3);
+  const pct=Math.min(100,avg/rMax*100).toFixed(1);
+  const col=avg<0.71?RD:avg<0.73?OR:GN;
+  rb.innerHTML+=`<div class="rbar-row"><div class="rbar-yr">${d.yr}</div><div class="rbar-bg"><div class="rbar-fg" style="width:${pct}%;background:${col}"></div></div><div class="rbar-val" style="color:${col}">${avg}</div></div>`;
+});
+
+// ─── CHARTS ───────────────────────────────────────────────────────────────
+function sma(arr,n){return arr.map((_,i)=>i<n-1?null:+(arr.slice(i-n+1,i+1).reduce((a,b)=>a+b,0)/n).toFixed(4));}
+
+new Chart(document.getElementById('chartMercado'),{type:'line',data:{labels:labels12,datasets:[
+  {label:'2024',data:mkt24,borderColor:'#C0B0A0',borderWidth:1.5,pointRadius:2,tension:.4,fill:false},
+  {label:'2025',data:mkt25,borderColor:BL,borderWidth:2.5,pointRadius:3,tension:.4,fill:false},
+  {label:'2026',data:[...mkt26,...Array(6).fill(null)],borderColor:OR,borderWidth:2.5,pointRadius:3,tension:.4,fill:false},
+]},options:{responsive:true,maintainAspectRatio:false,plugins:{tooltip:{mode:'index',intersect:false}},scales:{x:{grid:gO,ticks:{font:{size:11}}},y:{grid:gO,ticks:{font:{size:11},callback:v=>v+'k'}}}}});
+
+new Chart(document.getElementById('chartLongSeries'),{type:'line',data:{labels:allLabels,datasets:[
+  {label:'Bondinho',data:paxBond.map(v=>+(v/1000).toFixed(1)),borderColor:OR,backgroundColor:'rgba(232,80,10,0.06)',borderWidth:2,pointRadius:1.5,tension:.3,fill:true},
+  {label:'Cristo',data:paxCristo.map(v=>+(v/1000).toFixed(1)),borderColor:BL,backgroundColor:'rgba(26,92,168,0.06)',borderWidth:2,pointRadius:1.5,tension:.3,fill:true},
+]},options:{responsive:true,maintainAspectRatio:false,plugins:{tooltip:{mode:'index',intersect:false,callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.y}k`}}},scales:{x:{grid:gO,ticks:{font:{size:9},maxRotation:0,autoSkip:true,maxTicksLimit:10}},y:{grid:gO,ticks:{font:{size:11},callback:v=>v+'k'}}}}});
+
+const trendLine=sma(ratio,4);
+new Chart(document.getElementById('chartRatio'),{type:'line',data:{labels:allLabels,datasets:[
+  {label:'Razão',data:ratio,borderColor:BL,backgroundColor:'rgba(26,92,168,0.07)',borderWidth:2,pointRadius:1.5,tension:.2,fill:true},
+  {label:'Tendência',data:trendLine,borderColor:RD,borderWidth:1.5,pointRadius:0,tension:.4,fill:false,borderDash:[5,3]},
+]},options:{responsive:true,maintainAspectRatio:false,plugins:{tooltip:{mode:'index',intersect:false}},scales:{x:{grid:gO,ticks:{font:{size:9},maxRotation:0,autoSkip:true,maxTicksLimit:10}},y:{grid:gO,min:.62,max:.85,ticks:{font:{size:11},callback:v=>v.toFixed(2)}}}}});
+
+new Chart(document.getElementById('chartYoY'),{type:'bar',data:{labels:yoyLabels,datasets:[{label:'YoY Bondinho',data:yoyBond,backgroundColor:yoyBond.map(v=>v>=0?'rgba(27,138,82,0.5)':'rgba(192,57,43,0.5)'),borderColor:yoyBond.map(v=>v>=0?GN:RD),borderWidth:1,borderRadius:3,barPercentage:.8}]},options:{responsive:true,maintainAspectRatio:false,plugins:{tooltip:{callbacks:{label:c=>`YoY: ${c.parsed.y>0?'+':''}${c.parsed.y.toFixed(1)}%`}}},scales:{x:{grid:gO,ticks:{font:{size:9},maxRotation:45,autoSkip:true,maxTicksLimit:12}},y:{grid:gO,ticks:{font:{size:11},callback:v=>v+'%'}}}}});
+
+new Chart(document.getElementById('chartYoYComp'),{type:'line',data:{labels:yoyLabels,datasets:[
+  {label:'Bondinho',data:yoyBond,borderColor:OR,borderWidth:2,pointRadius:2,tension:.3,fill:false},
+  {label:'Cristo',data:yoyCristo,borderColor:BL,borderWidth:2,pointRadius:2,tension:.3,fill:false},
+]},options:{responsive:true,maintainAspectRatio:false,plugins:{tooltip:{mode:'index',intersect:false,callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.y>0?'+':''}${c.parsed.y.toFixed(1)}%`}}},scales:{x:{grid:gO,ticks:{font:{size:9},maxRotation:45,autoSkip:true,maxTicksLimit:12}},y:{grid:gO,ticks:{font:{size:11},callback:v=>v+'%'}}}}});
+
+new Chart(document.getElementById('chartCristo'),{type:'bar',data:{labels:allLabels,datasets:[
+  {label:'Trem',data:paxTrem,backgroundColor:'rgba(26,92,168,0.5)',borderColor:BL,borderWidth:1,borderRadius:2,stack:'s'},
+  {label:'Pain.',data:paxPain,backgroundColor:'rgba(27,138,82,0.5)',borderColor:GN,borderWidth:1,borderRadius:2,stack:'s'},
+]},options:{responsive:true,maintainAspectRatio:false,plugins:{tooltip:{mode:'index',intersect:false,callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.y}k`}}},scales:{x:{grid:gO,stacked:true,ticks:{font:{size:9},maxRotation:0,autoSkip:true,maxTicksLimit:10}},y:{grid:gO,stacked:true,ticks:{font:{size:10},callback:v=>v+'k'}}}}});
+
+function sum(arr,s,e){return arr.slice(s,e).reduce((a,b)=>a+b,0)}
+const csLabels=['2022','2023','2024','2025','2026 YTD'];
+const tremsArr=[sum(paxTrem,0,12),sum(paxTrem,12,24),sum(paxTrem,24,36),sum(paxTrem,36,48),sum(paxTrem,48,54)];
+const painsArr=[sum(paxPain,0,12),sum(paxPain,12,24),sum(paxPain,24,36),sum(paxPain,36,48),sum(paxPain,48,54)];
+const tremPct=tremsArr.map((t,i)=>+((t/(t+painsArr[i]))*100).toFixed(1));
+const painPct=tremPct.map(v=>+(100-v).toFixed(1));
+new Chart(document.getElementById('chartCristoShare'),{type:'bar',data:{labels:csLabels,datasets:[
+  {label:'Trem %',data:tremPct,backgroundColor:'rgba(26,92,168,0.55)',borderColor:BL,borderWidth:1.5,borderRadius:4,stack:'s'},
+  {label:'Pain. %',data:painPct,backgroundColor:'rgba(27,138,82,0.55)',borderColor:GN,borderWidth:1.5,borderRadius:4,stack:'s'},
+]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'bottom',labels:{font:{size:9},boxWidth:10,color:'#7A6A58',padding:8}},tooltip:{mode:'index',intersect:false,callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.y}%`}}},scales:{x:{grid:gO,stacked:true,ticks:{font:{size:10}}},y:{grid:gO,stacked:true,max:100,ticks:{font:{size:10},callback:v=>v+'%'}}}}});
+
+new Chart(document.getElementById('chartPremium'),{type:'line',data:{labels:priceMonths,datasets:[{label:'Prêmio %',data:premium,borderColor:OR,backgroundColor:ctx=>{const g=ctx.chart.ctx.createLinearGradient(0,0,0,200);g.addColorStop(0,'rgba(232,80,10,0.2)');g.addColorStop(1,'rgba(232,80,10,0)');return g;},borderWidth:2.5,pointRadius:2,tension:.05,fill:true,stepped:'before'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{tooltip:{callbacks:{label:c=>`Prêmio: +${c.parsed.y.toFixed(1)}%`}}},scales:{x:{grid:gO,ticks:{font:{size:9},maxRotation:45,autoSkip:true,maxTicksLimit:8}},y:{grid:gO,min:25,max:58,ticks:{font:{size:10},callback:v=>v+'%'}}}}});
+
+new Chart(document.getElementById('chartCambio'),{type:'line',data:{labels:priceMonths,datasets:[
+  {label:'USD',data:bondUSD,borderColor:BL,borderWidth:2,pointRadius:1.5,tension:.3,fill:false,yAxisID:'y'},
+  {label:'EUR',data:bondEUR,borderColor:VI,borderWidth:2,pointRadius:1.5,tension:.3,fill:false,yAxisID:'y'},
+  {label:'ARS/100',data:bondARS100,borderColor:RD,borderWidth:2,pointRadius:1.5,tension:.3,fill:false,yAxisID:'y2'},
+]},options:{responsive:true,maintainAspectRatio:false,
+  plugins:{tooltip:{mode:'index',intersect:false,callbacks:{label:c=>c.dataset.label==='ARS/100'?`ARS: ${(c.parsed.y*100).toLocaleString('pt-BR')}`:c.dataset.label==='USD'?`USD: $${c.parsed.y.toFixed(1)}`:`EUR: €${c.parsed.y.toFixed(1)}`}}},
+  scales:{
+    x:{grid:gO,ticks:{font:{size:9},maxRotation:45,autoSkip:true,maxTicksLimit:8}},
+    y:{grid:gO,position:'left',ticks:{font:{size:10},callback:v=>v.toFixed(0)},title:{display:true,text:'USD / EUR',font:{size:9},color:'#7A6A58'}},
+    y2:{grid:{display:false},position:'right',ticks:{font:{size:10},color:RD,callback:v=>(v*100).toLocaleString('pt-BR')},title:{display:true,text:'ARS (×100)',font:{size:9},color:RD}}
+  }}});
+
+new Chart(document.getElementById('chartPrecos'),{type:'line',data:{labels:priceMonths,datasets:[
+  {label:'Bondinho',data:priceBond,borderColor:OR,borderWidth:2.5,pointRadius:1,tension:.0,fill:false,stepped:'before'},
+  {label:'Trem',data:priceTrem,borderColor:BL,borderWidth:2,pointRadius:1,tension:.0,fill:false,stepped:'before'},
+  {label:'P.Saída',data:pricePainSaid,borderColor:GN,borderWidth:2,pointRadius:1,tension:.0,fill:false,stepped:'before'},
+]},options:{responsive:true,maintainAspectRatio:false,plugins:{tooltip:{mode:'index',intersect:false,callbacks:{label:c=>`${c.dataset.label}: R$${c.parsed.y??'N/A'}`}}},scales:{x:{grid:gO,ticks:{font:{size:9},maxRotation:45,autoSkip:true,maxTicksLimit:8}},y:{grid:gO,min:70,max:215,ticks:{font:{size:10},callback:v=>`R$${v}`}}}}});
+
+new Chart(document.getElementById('chartCorr'),{type:'bar',data:{labels:['Câmbio ×\nRazão A/B','Câmbio ×\nPAX Bond.','Câmbio ×\nPAX Cristo','PAX Bond.\n× Cristo'],datasets:[{label:'Pearson r',data:[0.155,0.358,0.317,0.982],backgroundColor:[`${OR}80`,`${BL}80`,`${VI}80`,`${GN}80`],borderColor:[OR,BL,VI,GN],borderWidth:1.5,borderRadius:6,barPercentage:.65}]},options:{responsive:true,maintainAspectRatio:false,plugins:{tooltip:{callbacks:{label:c=>`r = ${c.parsed.y.toFixed(3)}`}}},scales:{x:{grid:gO,ticks:{font:{size:10}}},y:{grid:gO,min:-0.1,max:1.1,ticks:{font:{size:11}}}}}});
+
+// ─── ORIGEM CHARTS ────────────────────────────────────────────────────────
+
+// Table
+const otbl = document.getElementById('origemTable');
+const oMax = Math.max(...origemPaises.map(d=>d.ytd26));
+otbl.innerHTML = `<thead><tr><th>País</th><th>YTD 25</th><th>YTD 26</th><th>Var %</th></tr></thead><tbody id="otb"></tbody>`;
+const otb = document.getElementById('otb');
+if(otb) origemPaises.forEach(d=>{
+  const up = d.var >= 0;
+  const bw = +(d.ytd26/oMax*100).toFixed(1);
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td><div class="atag"><div class="adot" style="background:${d.color}"></div>${d.name}</div><div class="mbar"><div class="mbf" style="width:${bw}%;background:${d.color}50"></div></div></td><td style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)">${(d.ytd25/1000).toFixed(1)}k</td><td style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)">${(d.ytd26/1000).toFixed(1)}k</td><td><span class="b ${up?'bu':'bd'}">${up?'+':''}${d.var.toFixed(1)}%</span></td>`;
+  otb.appendChild(tr);
+});
+
+// Horizontal bar chart
+const ob = document.getElementById('chartOrigemBar');
+if(ob) new Chart(ob, {
+  type: 'bar',
+  data: {
+    labels: origemPaises.filter(d=>d.name!=='Demais').map(d=>d.name),
+    datasets: [
+      {label:'YTD 2025', data: origemPaises.filter(d=>d.name!=='Demais').map(d=>d.ytd25/1000), backgroundColor:'rgba(26,92,168,0.35)', borderColor:BL, borderWidth:1, borderRadius:3},
+      {label:'YTD 2026', data: origemPaises.filter(d=>d.name!=='Demais').map(d=>d.ytd26/1000), backgroundColor: origemPaises.filter(d=>d.name!=='Demais').map(d=>d.color+'BB'), borderColor: origemPaises.filter(d=>d.name!=='Demais').map(d=>d.color), borderWidth:1.5, borderRadius:3}
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {display:true, position:'top', labels:{font:{size:10}, boxWidth:10, color:'#7A6A58', padding:8}},
+      tooltip: {mode:'index', intersect:false, callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.x.toFixed(1)}k`}}
+    },
+    scales: {
+      x: {grid:gO, ticks:{font:{size:10}, callback:v=>v+'k'}},
+      y: {grid:{display:false}, ticks:{font:{size:11}}}
+    }
+  }
+});
+
+// Trend chart
+const ot = document.getElementById('chartOrigemTrend');
+if(ot) new Chart(ot, {
+  type: 'line',
+  data: {
+    labels: origemLabels,
+    datasets: [
+      {label:'Argentina', data:origemArg.map(v=>v===null?null:+(v/1000).toFixed(1)), borderColor:'#58C8F8', borderWidth:2, pointRadius:1, tension:.3, fill:false},
+      {label:'EUA',       data:origemEUA.map(v=>v===null?null:+(v/1000).toFixed(1)), borderColor:'#4080E0', borderWidth:2, pointRadius:1, tension:.3, fill:false},
+      {label:'Chile',     data:origemChi.map(v=>v===null?null:+(v/1000).toFixed(1)), borderColor:'#E89040', borderWidth:2, pointRadius:1, tension:.3, fill:false},
+      {label:'Colômbia',  data:origemCol.map(v=>v===null?null:+(v/1000).toFixed(1)), borderColor:'#60D090', borderWidth:2, pointRadius:1, tension:.3, fill:false},
+      {label:'França',    data:origemFra.map(v=>v===null?null:+(v/1000).toFixed(1)), borderColor:'#B888F0', borderWidth:2, pointRadius:1, tension:.3, fill:false}
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {tooltip:{mode:'index',intersect:false, callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.y}k`}}},
+    scales: {
+      x: {grid:gO, ticks:{font:{size:9}, maxRotation:0, autoSkip:true, maxTicksLimit:10}},
+      y: {grid:gO, ticks:{font:{size:10}, callback:v=>v+'k'}}
+    }
+  }
+});
+
+// Mix Intl vs Nacional
+const om = document.getElementById('chartMixNacIntl');
+if(om) {
+  const mixLabels = ['2024','2025','2026 YTD'];
+  // Calculado de dados YTD (referência: totais disponíveis)
+  const intlVals = [ytdIntl25, ytdIntl26]; // 2025 e 2026
+  const nacVals  = [ytdNac25, ytdNac26];
+  // Para 2024 vamos usar soma Jan-Dez 2024 dos origemPaises
+  const intl24 = origemPaises.reduce((s,d)=>{
+    const arr = d.name==='Argentina'?origemArg:d.name==='Chile'?origemChi:d.name==='Estados Unidos'?origemEUA:d.name==='França'?origemFra:d.name==='Reino Unido'?origemUK:d.name==='Colômbia'?origemCol:d.name==='Peru'?origemPer:d.name==='México'?origemMex:d.name==='Alemanha'?origemAle:d.name==='Espanha'?origemEsp:null;
+    if(!arr) return s;
+    return s + arr.slice(0,12).reduce((a,b)=>(a||0)+(b||0),0);
+  }, 0);
+  const totals25 = ytdIntl25 + ytdNac25;
+  const totals26 = ytdIntl26 + ytdNac26;
+  const mixData = [
+    {intl: intl24, nac: null, tot: null},  // 2024 partial (só top10)
+    {intl: ytdIntl25, nac: ytdNac25, tot: totals25},
+    {intl: ytdIntl26, nac: ytdNac26, tot: totals26}
+  ];
+  const intlPct = mixData.map(d => d.tot ? +((d.intl/d.tot)*100).toFixed(1) : null);
+  const nacPct  = mixData.map(d => d.tot ? +((d.nac/d.tot)*100).toFixed(1) : null);
+  new Chart(om, {
+    type: 'bar',
+    data: {
+      labels: mixLabels,
+      datasets: [
+        {label:'Estrangeiro %', data:[null, intlPct[1], intlPct[2]], backgroundColor:'rgba(232,80,10,0.55)', borderColor:OR, borderWidth:1.5, borderRadius:4, stack:'s'},
+        {label:'Nacional %',   data:[null, nacPct[1],  nacPct[2]],  backgroundColor:'rgba(26,92,168,0.45)',  borderColor:BL, borderWidth:1.5, borderRadius:4, stack:'s'}
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {display:true, position:'bottom', labels:{font:{size:9}, boxWidth:10, color:'#7A6A58', padding:8}},
+        tooltip: {mode:'index', intersect:false, callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.y}%`}}
+      },
+      scales: {
+        x: {grid:gO, stacked:true, ticks:{font:{size:11}}},
+        y: {grid:gO, stacked:true, max:100, ticks:{font:{size:10}, callback:v=>v+'%'}}
+      }
+    }
+  });
+}
+
+</script>
+</body>
+</html>
