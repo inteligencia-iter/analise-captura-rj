@@ -244,12 +244,6 @@ body{background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;fon
   </div>
 </div>
 
-<!-- WARNING -->
-<div class="warn">
-  <span class="warn-ico">⚠️</span>
-  <div><strong>Aviso metodológico:</strong> Os dados de visitantes estrangeiros do Bondinho são estimativas baseadas exclusivamente em compras pelo site. A representatividade por país pode estar distorcida conforme o perfil de compra de cada nacionalidade (bilheteria vs. digital). Conclusões por país de origem devem ser tratadas como tendências indicativas.</div>
-</div>
-
 <div class="main">
 
 <!-- MAIN INSIGHT -->
@@ -279,11 +273,6 @@ body{background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;fon
 <!-- ── BONDINHO DEEP DIVE ────────────────────────────────────────── -->
 <div class="sec-divider"><span class="sd-num">02</span><h3>Parque Bondinho — Longa Série & Razão vs Cristo (Jan/22–Jun/26)</h3></div>
 
-<div class="strip sg">
-  <span class="ico">📌</span>
-  <div><strong>Ponto de inflexão — Dezembro/2023:</strong> O Bondinho subiu de R$160 para R$185 (+15,6%) enquanto o Trem permaneceu a R$122,50. A relação do preço do Bondinho sobre Cristo passou de 30,6% para 51,0% em um único mês. O ratio Bondinho/Cristo caiu de ~0,708 para ~0,690 em Janeiro/24 e não recuperou o patamar anterior.</div>
-</div>
-
 <div class="g2">
   <div class="cc">
     <div class="ct">PAX Mensal — Bondinho vs Cristo (Jan/22–Jun/26)</div>
@@ -293,9 +282,9 @@ body{background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;fon
   </div>
   <div class="cc">
     <div class="ct">Razão Bondinho / Cristo — Série Histórica</div>
-    <div class="cs"><span>Queda = Bondinho perdendo share relativo. SMA-4 = tendência estrutural.</span></div>
+    <div class="cs"><span>Queda = Bondinho perdendo share relativo.</span></div>
     <div class="cb" style="height:238px"><canvas id="chartRatio"></canvas></div>
-    <div class="leg"><div class="li"><div class="ld" style="background:var(--blue)"></div>Razão Bondinho/Cristo</div><div class="li"><div class="ld" style="background:var(--red)"></div>Tendência (SMA-4)</div></div>
+    <div class="leg"><div class="li"><div class="ld" style="background:var(--blue)"></div>Razão Bondinho/Cristo</div></div>
   </div>
 </div>
 
@@ -312,6 +301,12 @@ body{background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;fon
     <div class="cb" style="height:200px"><canvas id="chartYoYComp"></canvas></div>
     <div class="leg"><div class="li"><div class="ld" style="background:var(--orange)"></div>Bondinho</div><div class="li"><div class="ld" style="background:var(--blue)"></div>Cristo</div></div>
   </div>
+</div>
+
+<div class="cc" style="margin-bottom:14px">
+  <div class="ct">Captura de Turista Internacional — Bondinho (Jan/24–Mai/26)</div>
+  <div class="cs"><span>Visitantes estrangeiros capturados via site, mês a mês (total, sem abertura por país)</span><span class="b bu">YTD 26: +5,8% vs YTD 25</span></div>
+  <div class="cb" style="height:220px"><canvas id="chartIntlTotal"></canvas></div>
 </div>
 
 <!-- ── CRISTO ────────────────────────────────────────────────────── -->
@@ -427,7 +422,7 @@ body{background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;fon
   <div class="hcard">
     <div class="hhead"><div class="hico" style="background:var(--red-l)">💥</div><span class="prob ph">Alta · Evidência direta</span></div>
     <div class="htitle">Duplo Choque Dez/23: Price Anchoring + Colapso ARS Simultâneos</div>
-    <div class="hbody">O Bondinho subiu +15,6% no mesmo mês que o ARS colapsou 56% (Milei, Dez/13/23). Dois mercados impactados simultaneamente. O ratio Bondinho/Cristo caiu de 0,708→0,690 em Jan/24 e nunca mais recuperou o patamar anterior. A teoria do price anchoring (Kahneman & Tversky, 1979) estabelece que consumidores avaliam preços relativamente a âncoras — o Trem fixo em R$122,50 funcionava como referência que tornou o salto de R$160→R$185 do Bondinho percebido como ruptura. Ariely (2008) complementa: percepção de valor é construída comparativamente, não em absoluto. Do lado cambial, Crouch (1994) estabelece relação empírica direta entre variação de câmbio e demanda turística — a desvalorização de 56% do ARS equivale a um aumento de 128% no custo real do Bondinho para o visitante argentino em apenas 30 dias.</div>
+    <div class="hbody">O Bondinho subiu +15,6% no mesmo mês em que o ARS colapsou 56% (Dez/23). O ratio Bondinho/Cristo caiu de 0,708 para 0,690 em Jan/24 e nunca recuperou o patamar anterior. Kahneman &amp; Tversky (1979, price anchoring): preços são avaliados por comparação a uma âncora — o Trem, fixo em R$122,50, tornou o salto do Bondinho percebido como ruptura. Crouch (1994): câmbio tem relação direta com demanda turística — a desvalorização do ARS equivaleu a +128% no custo real do Bondinho para o argentino em 30 dias.</div>
     <div class="hftr">
       <div class="hfe"><span class="hfi">▲</span> Dez/23: ARS 11.765→30.833 (+162%) em 30 dias</div>
       <div class="hfe"><span class="hfi">▲</span> Prêmio Bond/Trem: 30,6%→51,0% em um único mês</div>
@@ -439,7 +434,7 @@ body{background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;fon
   <div class="hcard">
     <div class="hhead"><div class="hico" style="background:var(--red-l)">📉</div><span class="prob ph">Alta · Estrutural</span></div>
     <div class="htitle">Mudança de Mix de Mercado Como Causa Raiz (Anterior ao Choque)</div>
-    <div class="hbody">Em Jul/23 — pico sazonal do Bondinho — o gap YoY já era –14,3pp (Cristo +27,1% vs Bondinho +12,8%). Isso prova que a perda de share competitivo antecede o choque de preço de Dez/23. A teoria do Tourism Area Life Cycle (Butler, 1980) explica o mecanismo: mercados maduros como Argentina e Chile, com alta taxa de visitantes recorrentes ao Rio, reduzem progressivamente a propensão a revisitar atrativos já conhecidos. Ao mesmo tempo, novos mercados (Colômbia, Uruguai, Peru) chegam guiados por descoberta digital, onde o Cristo — Maravilha do Mundo Moderno — domina o topo de busca. O Dez/23 foi acelerador de uma tendência estrutural já em curso, não sua causa raiz.</div>
+    <div class="hbody">Em Jul/23, pico sazonal do Bondinho, o gap YoY já era –14,3pp (Cristo +27,1% vs Bondinho +12,8%) — a perda de share antecede o choque de preço de Dez/23. Butler (1980, Tourism Area Life Cycle): mercados maduros e recorrentes (Argentina, Chile) reduzem a propensão a revisitar atrativos conhecidos; novos mercados (Colômbia, Uruguai, Peru) chegam via descoberta digital, onde o Cristo domina o topo de busca. Dez/23 acelerou uma tendência estrutural que já estava em curso.</div>
     <div class="hftr">
       <div class="hfe"><span class="hfi">▲</span> Jul/23: Bondinho no pico sazonal mas 14,3pp abaixo do Cristo em YoY</div>
       <div class="hfe"><span class="hfi">▲</span> Série de gaps negativos antes do choque (Jul–Nov/23)</div>
@@ -452,7 +447,7 @@ body{background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;fon
   <div class="hcard">
     <div class="hhead"><div class="hico" style="background:rgba(255,176,32,0.15)">🏗️</div><span class="prob pm">Alta · Estrutural</span></div>
     <div class="htitle">Cristo como Ecossistema Multi-Produto: Captura de Demanda Onde o Bondinho É Ausente</div>
-    <div class="hbody">O Cristo opera três produtos independentes em três faixas: Paineiras Saída (R$87 — budget), Paineiras Copa (R$132 — mainstream) e Trem Corcovado (R$134 — premium). O Bondinho, a R$205, existe apenas na faixa ultra-premium. Bondinho e Cristo não se substituem — a correlação r=0,982 entre seus PAX confirma que crescem e caem juntos pelo mesmo driver de demanda. O problema é de cobertura: com mercados de maior sensibilidade a preço crescendo aceleradamente (Colômbia +57%, Uruguai +111%), o Cristo os captura via Paineiras Saída; o Bondinho não os captura de forma alguma. A teoria de versioning (Shapiro & Varian, 1999) demonstra que portfólios multi-faixa maximizam captura ao longo de toda a curva de demanda — o Bondinho está estruturalmente ausente da faixa de R$87 a R$132, exatamente onde cresce o novo turismo incoming.</div>
+    <div class="hbody">O Cristo opera em três faixas: Paineiras Saída (R$87), Paineiras Copa (R$132) e Trem (R$134). O Bondinho, a R$205, atua só no ultra-premium. A correlação r=0,982 confirma que os dois não se substituem — crescem juntos pelo mesmo driver de demanda. O problema é de cobertura: mercados de maior sensibilidade a preço (Colômbia +57%, Uruguai +111%) são capturados pelo Cristo via Paineiras Saída; o Bondinho não os captura. Shapiro &amp; Varian (1999, versioning): portfólios multi-faixa maximizam a captura de demanda — o Bondinho está estruturalmente ausente da faixa R$87–R$132, onde cresce o novo turismo incoming.</div>
     <div class="hftr">
       <div class="hfe"><span class="hfi">▲</span> Cristo YTD 2026: +3,6% vs Bondinho +1,0% — cresce 3,6× mais rápido no mesmo mercado</div>
       <div class="hfe"><span class="hfi">▲</span> Família×4: Bondinho R$820 vs Paineiras Saída R$348 → diferença de R$472 (+50% vs Nov/23)</div>
@@ -465,7 +460,7 @@ body{background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;fon
   <div class="hcard">
     <div class="hhead"><div class="hico" style="background:rgba(255,176,32,0.15)">🏗️</div><span class="prob pm">Alta · Estrutural</span></div>
     <div class="htitle">Vulnerabilidade de Preço Único — Cristo tem 3 Produtos, Bondinho tem 1</div>
-    <div class="hbody">Cristo opera em R$87 (budget), R$132 (mainstream) e R$134 (premium). O Bondinho a R$205 atua apenas no ultra-premium sem proteção nem embaixo (budget) nem em cima (exclusividade real). Com crescimento acelerado de mercados de menor poder aquisitivo (Colômbia +57%, Uruguai +111%), o Bondinho não consegue capturar esse segmento — o Cristo sim.</div>
+    <div class="hbody">Cristo opera em três faixas (R$87 / R$132 / R$134); o Bondinho, a R$205, só no ultra-premium — sem proteção embaixo (budget) nem em cima (exclusividade real). Mercados de menor poder aquisitivo crescem mais rápido (Colômbia +57%, Uruguai +111%) e o Bondinho não os captura — o Cristo sim.</div>
     <div class="hftr">
       <div class="hfe"><span class="hfi">▲</span> Gap Bond vs PainSaída×4: R$314 (Nov/23) → R$472 (Jun/26): +50%</div>
       <div class="hfe"><span class="hfi">▲</span> Novos mercados crescem em volume mas com menor poder aquisitivo</div>
@@ -478,7 +473,7 @@ body{background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;fon
   <div class="hcard">
     <div class="hhead"><div class="hico" style="background:var(--blue-l)">📱</div><span class="prob pl">Média · Digital</span></div>
     <div class="htitle">Iconicity Gap no Discovery Digital: Cristo é Maravilha do Mundo Moderno</div>
-    <div class="hbody">Cristo Redentor é #1 em "What to do in Rio de Janeiro" globalmente e uma das 7 Maravilhas do Mundo Moderno (2007). Pesquisas de turismo digital (Gretzel et al., 2020) mostram decisão crescentemente mediada por algoritmos. Para turistas de novos mercados (Colômbia, Peru) que pesquisam online, Cristo aparece antes do Bondinho em praticamente todos os canais de descoberta digital.</div>
+    <div class="hbody">Cristo é uma das 7 Maravilhas do Mundo Moderno e lidera buscas por "o que fazer no Rio". Gretzel et al. (2020): decisões de viagem são cada vez mais mediadas por algoritmos — para turistas de novos mercados (Colômbia, Peru), o Cristo aparece antes do Bondinho em praticamente todos os canais digitais.</div>
     <div class="hftr">
       <div class="hfe"><span class="hfi">▲</span> Cristo: 7 Maravilhas do Mundo Moderno — reconhecimento global instantâneo</div>
       <div class="hfe"><span class="hfi">—</span> Falta: Google Trends comparativo + share of voice em OTAs por país</div>
@@ -490,7 +485,7 @@ body{background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;fon
   <div class="hcard">
     <div class="hhead"><div class="hico" style="background:var(--blue-l)">📊</div><span class="prob pl">Moderada · Viés</span></div>
     <div class="htitle">Viés de Medição: Bilheteria vs Site Distorce Captura por Origem</div>
-    <div class="hbody">Como a base de visitantes estrangeiros usa apenas compras no site, mercados com maior digitalização (EUA, Europa) ficam sobre-representados; mercados de compra presencial (Colômbia, Uruguai, Peru) ficam sub-representados. Com crescimento acelerado desses mercados no denominador (CLARO), a taxa de captura PARECE cair mesmo se o Bondinho mantiver share real. Parte da "queda de captura" pode ser artefato estatístico.</div>
+    <div class="hbody">A base de estrangeiros só considera compras no site: mercados mais digitais (EUA, Europa) ficam sobre-representados; mercados de compra presencial (Colômbia, Uruguai, Peru) ficam sub-representados. Como esses últimos crescem mais rápido, a taxa de captura pode parecer cair mesmo sem perda real de share — parte da queda pode ser artefato estatístico.</div>
     <div class="hftr">
       <div class="hfe"><span class="hfi">▲</span> EUA e Europa (alta digitalização): captura registrada cresceu — consistente com hipótese</div>
       <div class="hfe"><span class="hfi">▲</span> Colômbia, Uruguai: crescem no denominador mas subregistrados no numerador</div>
@@ -524,6 +519,27 @@ body{background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;fon
       <li>Pesquisa de saída com turistas no Rio: "Visitou o Bondinho? Por quê?" — única forma de validar hipóteses motivacionais</li>
       <li>Preço médio real negociado via receptivos/agências por mercado — o rack pode diferir do preço efetivo</li>
       <li>Inflação ARS 2023–2026 e renda real de turistas argentinos — contextualiza poder aquisitivo além da taxa PTAX</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ── PRÓXIMOS PASSOS ─────────────────────────────────────────────── -->
+<div class="sec-divider" style="margin-top:24px"><span class="sd-num">07</span><h3>Próximos Passos</h3></div>
+
+<div class="mgrid">
+  <div class="mc">
+    <div class="mt">🎟️ Capacidade &amp; Precificação Comparada</div>
+    <ul class="ml">
+      <li>Comparar a variação de preço do Bilhete Bondinho com públicos onde o preço do bilhete não foi alterado — Bilhete Estado RJ (e Trilha) e Bilhete Promo Brasil — para isolar o efeito do reajuste de preço do efeito de mercado</li>
+      <li>Comparar isoladamente com o Trem do Corcovado: ambos operam com capacidade fixa (trem e teleférico), então os dois sofrem do mesmo limite de estoque operacional em horários de pico</li>
+      <li>Analisar a taxa de ocupação de 2025 vs 2026, descendo a granularidade para mensal, semanal e diária — o crescimento de turistas internacionais não é homogêneo ao longo do mês, e ao atingir o limite de estoque em horários específicos deixamos de capturar parte da demanda</li>
+    </ul>
+  </div>
+  <div class="mc">
+    <div class="mt">📡 Monitoramento e Inteligência Externa</div>
+    <ul class="ml">
+      <li>Integrar a API do Climatempo com o Claude para monitorar o desempenho meteorológico por faixa de horário em tempo real, cruzando com PAX e ocupação</li>
+      <li>Google Trends: comparar volume e qualidade de busca sobre o Parque Bondinho vs. Cristo Redentor, tanto no quantitativo quanto nos termos mais buscados</li>
     </ul>
   </div>
 </div>
@@ -579,6 +595,9 @@ const mkt25=[790.907,582.710,608.778,505.776,507.380,474.862,673.553,546.665,502
 const mkt26=[774.013,596.274,654.528,604.355,510.773,442.395];
 
 
+const intlMonthLabels=['jan/24','fev/24','mar/24','abr/24','mai/24','jun/24','jul/24','ago/24','set/24','out/24','nov/24','dez/24','jan/25','fev/25','mar/25','abr/25','mai/25','jun/25','jul/25','ago/25','set/25','out/25','nov/25','dez/25','jan/26','fev/26','mar/26','abr/26','mai/26'];
+const intlTotal=[58569.1,49225.7,49555.3,44474.4,41438.9,39247.0,58257.0,50724.6,51315.8,49027.3,53269.7,53078.8,107397.0,87901.1,92930.5,72813.4,70491.4,64428.4,88740.5,81473.8,72251.2,74567.7,78318.0,77667.8,106835.4,91914.6,96128.5,89309.8,72218.7];
+
 // ─── MARKET TABLE ─────────────────────────────────────────────────────────
 const mktData=[
   {name:'Total Mercado',color:'#303840',ytd25:3470.413,ytd26:3582.338,pct:3.2},
@@ -617,8 +636,6 @@ ratioYears.forEach(d=>{
 });
 
 // ─── CHARTS ───────────────────────────────────────────────────────────────
-function sma(arr,n){return arr.map((_,i)=>i<n-1?null:+(arr.slice(i-n+1,i+1).reduce((a,b)=>a+b,0)/n).toFixed(4));}
-
 new Chart(document.getElementById('chartMercado'),{type:'line',data:{labels:labels12,datasets:[
   {label:'2024',data:mkt24,borderColor:'#C0B0A0',borderWidth:1.5,pointRadius:2,tension:.4,fill:false},
   {label:'2025',data:mkt25,borderColor:BL,borderWidth:2.5,pointRadius:3,tension:.4,fill:false},
@@ -630,10 +647,8 @@ new Chart(document.getElementById('chartLongSeries'),{type:'line',data:{labels:a
   {label:'Cristo',data:paxCristo.map(v=>+(v/1000).toFixed(1)),borderColor:BL,backgroundColor:'rgba(26,92,168,0.06)',borderWidth:2,pointRadius:1.5,tension:.3,fill:true},
 ]},options:{responsive:true,maintainAspectRatio:false,plugins:{tooltip:{mode:'index',intersect:false,callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.y}k`}}},scales:{x:{grid:gO,ticks:{font:{size:9},maxRotation:0,autoSkip:true,maxTicksLimit:10}},y:{grid:gO,ticks:{font:{size:11},callback:v=>v+'k'}}}}});
 
-const trendLine=sma(ratio,4);
 new Chart(document.getElementById('chartRatio'),{type:'line',data:{labels:allLabels,datasets:[
   {label:'Razão',data:ratio,borderColor:BL,backgroundColor:'rgba(26,92,168,0.07)',borderWidth:2,pointRadius:1.5,tension:.2,fill:true},
-  {label:'Tendência',data:trendLine,borderColor:RD,borderWidth:1.5,pointRadius:0,tension:.4,fill:false,borderDash:[5,3]},
 ]},options:{responsive:true,maintainAspectRatio:false,plugins:{tooltip:{mode:'index',intersect:false}},scales:{x:{grid:gO,ticks:{font:{size:9},maxRotation:0,autoSkip:true,maxTicksLimit:10}},y:{grid:gO,min:.62,max:.85,ticks:{font:{size:11},callback:v=>v.toFixed(2)}}}}});
 
 new Chart(document.getElementById('chartYoY'),{type:'bar',data:{labels:yoyLabels,datasets:[{label:'YoY Bondinho',data:yoyBond,backgroundColor:yoyBond.map(v=>v>=0?'rgba(27,138,82,0.5)':'rgba(192,57,43,0.5)'),borderColor:yoyBond.map(v=>v>=0?GN:RD),borderWidth:1,borderRadius:3,barPercentage:.8}]},options:{responsive:true,maintainAspectRatio:false,plugins:{tooltip:{callbacks:{label:c=>`YoY: ${c.parsed.y>0?'+':''}${c.parsed.y.toFixed(1)}%`}}},scales:{x:{grid:gO,ticks:{font:{size:9},maxRotation:45,autoSkip:true,maxTicksLimit:12}},y:{grid:gO,ticks:{font:{size:11},callback:v=>v+'%'}}}}});
@@ -681,6 +696,10 @@ new Chart(document.getElementById('chartPrecos'),{type:'line',data:{labels:price
 
 new Chart(document.getElementById('chartCorr'),{type:'bar',data:{labels:['Câmbio ×\nRazão A/B','Câmbio ×\nPAX Bond.','Câmbio ×\nPAX Cristo','PAX Bond.\n× Cristo'],datasets:[{label:'Pearson r',data:[0.155,0.358,0.317,0.982],backgroundColor:[`${OR}80`,`${BL}80`,`${VI}80`,`${GN}80`],borderColor:[OR,BL,VI,GN],borderWidth:1.5,borderRadius:6,barPercentage:.65}]},options:{responsive:true,maintainAspectRatio:false,plugins:{tooltip:{callbacks:{label:c=>`r = ${c.parsed.y.toFixed(3)}`}}},scales:{x:{grid:gO,ticks:{font:{size:10}}},y:{grid:gO,min:-0.1,max:1.1,ticks:{font:{size:11}}}}}});
 
+
+new Chart(document.getElementById('chartIntlTotal'),{type:'line',data:{labels:intlMonthLabels,datasets:[
+  {label:'Turista Internacional',data:intlTotal.map(v=>+(v/1000).toFixed(1)),borderColor:OR,backgroundColor:ctx=>{const g=ctx.chart.ctx.createLinearGradient(0,0,0,220);g.addColorStop(0,'rgba(232,80,10,0.18)');g.addColorStop(1,'rgba(232,80,10,0)');return g;},borderWidth:2.5,pointRadius:2,tension:.3,fill:true},
+]},options:{responsive:true,maintainAspectRatio:false,plugins:{tooltip:{mode:'index',intersect:false,callbacks:{label:c=>`Internacional: ${c.parsed.y}k`}}},scales:{x:{grid:gO,ticks:{font:{size:9},maxRotation:0,autoSkip:true,maxTicksLimit:10}},y:{grid:gO,ticks:{font:{size:11},callback:v=>v+'k'}}}}});
 </script>
 </body>
 </html>
